@@ -14,19 +14,47 @@ namespace AuroraQY.BlazorBlog.Infrastructure.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>().OwnsOne(u => u.Email);
+            base.OnModelCreating(modelBuilder);
 
-            modelBuilder
-                .Entity<Post>()
-                .HasMany(p => p.Comments)
-                .WithOne(c => c.Post)
-                .HasForeignKey("PostId");
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.OwnsOne(u => u.Email);
+                entity
+                    .HasMany(u => u.Posts)
+                    .WithOne(p => p.Author)
+                    .HasForeignKey(p => p.AuthorId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
 
-            modelBuilder
-                .Entity<User>()
-                .HasMany(u => u.Posts)
-                .WithOne(p => p.Author)
-                .HasForeignKey("AuthorId");
+            modelBuilder.Entity<Post>(entity =>
+            {
+                entity
+                    .HasMany(p => p.Comments)
+                    .WithOne(c => c.Post)
+                    .HasForeignKey("PostId")
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity
+                    .HasOne(p => p.Author)
+                    .WithMany(u => u.Posts)
+                    .HasForeignKey(p => p.AuthorId)
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
+
+            modelBuilder.Entity<Comment>(entity =>
+            {
+                entity
+                    .HasOne(c => c.Post)
+                    .WithMany(p => p.Comments)
+                    .HasForeignKey("PostId")
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity
+                    .HasOne(c => c.Author)
+                    .WithMany()
+                    .HasForeignKey("AuthorId")
+                    .OnDelete(DeleteBehavior.Restrict);
+            });
         }
     }
 }

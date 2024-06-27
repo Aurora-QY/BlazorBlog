@@ -8,8 +8,9 @@ namespace AuroraQY.BlazorBlog.Application.Mappings
     {
         public MappingProfile()
         {
-            CreateMap<Post, PostDto>()
-                .ForMember(dest => dest.AuthorName, opt => opt.MapFrom(src => src.Author.Username));
+            CreateMap<PostDto, Post>()
+                .ForMember(dest => dest.AuthorId, opt => opt.MapFrom(src => src.AuthorId))
+                .ForMember(dest => dest.Author, opt => opt.Ignore());
             CreateMap<PostDto, Post>();
 
             CreateMap<User, UserDto>()

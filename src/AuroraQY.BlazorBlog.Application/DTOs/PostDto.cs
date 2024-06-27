@@ -26,5 +26,12 @@ namespace AuroraQY.BlazorBlog.Application.DTOs
         public string AuthorName { get; set; }
 
         public int AuthorId { get; set; }
+
+        // 默认构造函数
+        public PostDto()
+        {
+            AuthorName = "AuroraQY";
+            AuthorId = 1;
+        }
     }
 }

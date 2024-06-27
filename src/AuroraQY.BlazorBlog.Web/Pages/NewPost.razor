@@ -58,17 +58,37 @@
     private PostDto newPost = new PostDto();
     private string renderedContent = "Markdown 渲染预览区域";
 
+    protected override void OnInitialized()
+    {
+        // 设置默认值
+        var currentTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        newPost.Title = $"Test {currentTime}";
+        newPost.Summary = $"{currentTime} Hello World!";
+        newPost.ImageUrl = "http://imgapi.xl0408.top/index.php";
+        newPost.Content = "Bang Dream it's mygo";
+
+        // 初始化时也更新预览
+        UpdatePreview();
+    }
+
     private async Task HandleValidSubmit()
     {
         newPost.CreatedAt = DateTime.UtcNow;
+        // TODO:替换为实际的用户ID，或者从认证系统中获取
+        newPost.AuthorId = 1; // 这里因为目前还是个人博客，所以就写死了
+        Console.WriteLine(newPost.AuthorId.ToString(), newPost.AuthorName);
         await PostService.CreatePostAsync(newPost);
         NavigationManager.NavigateTo("/");
     }
 
-    // 其他代码保持不变...
     private void OnContentChange(ChangeEventArgs e)
     {
         newPost.Content = e.Value.ToString();
+        UpdatePreview();
+    }
+
+    private void UpdatePreview()
+    {
         // 这里应该调用 Markdown 渲染函数
         // 暂时用简单的 HTML 转义代替
         renderedContent = System.Net.WebUtility.HtmlEncode(newPost.Content).Replace("\n", "<br>");

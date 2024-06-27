@@ -6,6 +6,7 @@ using AuroraQY.BlazorBlog.Application.DTOs;
 using AuroraQY.BlazorBlog.Application.Interfaces;
 using AuroraQY.BlazorBlog.Domain.Entities;
 using AuroraQY.BlazorBlog.Domain.Interfaces;
+using System.Text.Json;
 
 namespace AuroraQY.BlazorBlog.Application.Services
 {
@@ -40,6 +41,13 @@ namespace AuroraQY.BlazorBlog.Application.Services
 
         public async Task<int> CreatePostAsync(PostDto postDto)
         {
+            // 打印 postDto 的内容
+            string postDtoJson = JsonSerializer.Serialize(
+                postDto,
+                new JsonSerializerOptions { WriteIndented = true }
+            );
+            Console.WriteLine($"postDto: {postDtoJson}");
+
             var post = _mapper.Map<Post>(postDto);
             post.CreatedAt = DateTime.UtcNow;
             await _postRepository.AddAsync(post);
