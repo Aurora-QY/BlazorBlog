@@ -5,8 +5,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AuroraQY.BlazorBlog.Domain\AuroraQY.BlazorBlog.Domain.csproj" />
-
+    <ProjectReference Include="..\AuroraQY.BlazorBlog.Domain\AuroraQY.BlazorBlog.Domain.csproj"/>
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0-preview.1"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0-preview.1.24081.2"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0-preview.1.24081.2"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.0-preview.1.24080.9"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.0-preview.1.24080.9"/>
   </ItemGroup>
 </Project>

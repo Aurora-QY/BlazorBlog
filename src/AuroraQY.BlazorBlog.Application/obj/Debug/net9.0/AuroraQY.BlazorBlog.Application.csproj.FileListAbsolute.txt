@@ -3,3 +3,13 @@ D:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Application\obj\Debug\net9.0\Aurora
 D:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Application\obj\Debug\net9.0\AuroraQY.BlazorBlog.Application.AssemblyInfoInputs.cache
 D:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Application\obj\Debug\net9.0\AuroraQY.BlazorBlog.Application.AssemblyInfo.cs
 D:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Application\obj\Debug\net9.0\AuroraQY.BlazorBlog.Application.csproj.CoreCompileInputs.cache
+d:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Application\bin\Debug\net9.0\AuroraQY.BlazorBlog.Application.deps.json
+d:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Application\bin\Debug\net9.0\AuroraQY.BlazorBlog.Application.dll
+d:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Application\bin\Debug\net9.0\AuroraQY.BlazorBlog.Application.pdb
+d:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Application\bin\Debug\net9.0\AuroraQY.BlazorBlog.Domain.dll
+d:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Application\bin\Debug\net9.0\AuroraQY.BlazorBlog.Domain.pdb
+d:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Application\obj\Debug\net9.0\AuroraQY.962A43F4.Up2Date
+d:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Application\obj\Debug\net9.0\AuroraQY.BlazorBlog.Application.dll
+d:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Application\obj\Debug\net9.0\refint\AuroraQY.BlazorBlog.Application.dll
+d:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Application\obj\Debug\net9.0\AuroraQY.BlazorBlog.Application.pdb
+d:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Application\obj\Debug\net9.0\ref\AuroraQY.BlazorBlog.Application.dll

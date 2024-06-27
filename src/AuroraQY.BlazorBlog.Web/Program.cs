@@ -1,10 +1,10 @@
+using AuroraQY.BlazorBlog.Application.Interfaces;
+using AuroraQY.BlazorBlog.Application.Services;
+using AuroraQY.BlazorBlog.Infrastructure;
+using AuroraQY.BlazorBlog.Infrastructure.ExternalServices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using AuroraQY.BlazorBlog.Application.Services;
-using AuroraQY.BlazorBlog.Infrastructure.Data;
-using AuroraQY.BlazorBlog.Infrastructure.Repositories;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,14 +12,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-{
-    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
-});
+builder.Services.AddAutoMapper(typeof(Program).Assembly, typeof(PostService).Assembly);
+builder.Services.AddScoped<IPostService, PostService>();
+builder.Services.AddSingleton<MarkdownRenderer>();
 
-builder.Services.AddScoped<IBlogPostRepository, BlogPostRepository>();
-builder.Services.AddScoped<IBlogPostService, BlogPostService>();
+// builder.Services.AddApplication();
+builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 

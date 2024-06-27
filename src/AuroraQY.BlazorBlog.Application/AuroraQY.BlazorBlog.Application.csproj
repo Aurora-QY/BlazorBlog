@@ -1,14 +1,15 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-  
   <ItemGroup>
-    <ProjectReference Include="..\AuroraQY.BlazorBlog.Domain\AuroraQY.BlazorBlog.Domain.csproj" />
+    <ProjectReference Include="..\AuroraQY.BlazorBlog.Domain\AuroraQY.BlazorBlog.Domain.csproj"/>
   </ItemGroup>
-  
-
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0-preview.1.24081.2"/>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3"/>
+  </ItemGroup>
 </Project>

@@ -1,29 +1,5 @@
 ﻿@page "/"
-@using AuroraQY.BlazorBlog.Application.Services
-@using AuroraQY.BlazorBlog.Application.DTOs
-@inject IBlogPostService BlogPostService
 
-<h1>Welcome to AuroraQY's Blog</h1>
+<h1>Welcome to AuroraQY Blog</h1>
 
-@if (blogPosts == null)
-{
-    <p>Loading...</p>
-}
-else
-{
-    <ul>
-        @foreach (var post in blogPosts)
-        {
-            <li>@post.Title</li>
-        }
-    </ul>
-}
-
-@code {
-    private IEnumerable<BlogPostDto> blogPosts;
-
-    protected override async Task OnInitializedAsync()
-    {
-        blogPosts = await BlogPostService.GetAllPostsAsync();
-    }
-}
+<PostList />

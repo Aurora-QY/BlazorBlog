@@ -1,0 +1,29 @@
+@page "/posts/{Id:int}"
+
+@inject IPostService PostService
+@inject MarkdownRenderer MarkdownRenderer
+
+@if (post == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <h2>@post.Title</h2>
+    <p>By @post.AuthorName on @post.CreatedAt.ToShortDateString()</p>
+    <div class="post-content">
+        @((MarkupString)MarkdownRenderer.RenderToHtml(post.Content))
+    </div>
+}
+
+@code {
+    [Parameter]
+    public int Id { get; set; }
+
+    private PostDto post;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        post = await PostService.GetPostByIdAsync(Id);
+    }
+}

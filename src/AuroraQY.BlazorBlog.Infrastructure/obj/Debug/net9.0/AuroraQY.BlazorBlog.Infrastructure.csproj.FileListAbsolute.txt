@@ -18,3 +18,5 @@ D:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Infrastructure\obj\Debug\net9.0\Aur
 D:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Infrastructure\obj\Debug\net9.0\refint\AuroraQY.BlazorBlog.Infrastructure.dll
 D:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Infrastructure\obj\Debug\net9.0\AuroraQY.BlazorBlog.Infrastructure.pdb
 D:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Infrastructure\obj\Debug\net9.0\ref\AuroraQY.BlazorBlog.Infrastructure.dll
+D:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Infrastructure\bin\Debug\net9.0\AuroraQY.BlazorBlog.Infrastructure.runtimeconfig.json
+D:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Infrastructure\obj\Debug\net9.0\AuroraQY.BlazorBlog.Infrastructure.genruntimeconfig.cache

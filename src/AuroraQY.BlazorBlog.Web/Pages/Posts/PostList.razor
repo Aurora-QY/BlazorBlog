@@ -1,0 +1,30 @@
+@page "/posts"
+@inject IPostService PostService
+
+<h2>Latest Posts</h2>
+
+@if (posts == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    <div class="post-list">
+        @foreach (var post in posts)
+        {
+            <div class="post-item">
+                <h3><a href="/posts/@post.Id">@post.Title</a></h3>
+                <p>By @post.AuthorName on @post.CreatedAt.ToShortDateString()</p>
+            </div>
+        }
+    </div>
+}
+
+@code {
+    private IEnumerable<PostDto> posts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        posts = await PostService.GetAllPostsAsync();
+    }
+}

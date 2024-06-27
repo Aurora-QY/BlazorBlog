@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AuroraQY.BlazorBlog.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d308ec2b0c62939ad4c7db3e05ada1c516c4c834")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ea528515fafe9a4d22ac213bc08ce02817eb98e1")]
 [assembly: System.Reflection.AssemblyProductAttribute("AuroraQY.BlazorBlog.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AuroraQY.BlazorBlog.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
