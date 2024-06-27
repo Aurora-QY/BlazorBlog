@@ -1,0 +1,7 @@
+D:\0Study\BlazorBlog\AuroraQY.BlazorBlog.Web\obj\Debug\net7.0\AuroraQY.BlazorBlog.Web.GeneratedMSBuildEditorConfig.editorconfig
+D:\0Study\BlazorBlog\AuroraQY.BlazorBlog.Web\obj\Debug\net7.0\AuroraQY.BlazorBlog.Web.AssemblyInfoInputs.cache
+D:\0Study\BlazorBlog\AuroraQY.BlazorBlog.Web\obj\Debug\net7.0\AuroraQY.BlazorBlog.Web.AssemblyInfo.cs
+D:\0Study\BlazorBlog\AuroraQY.BlazorBlog.Web\obj\Debug\net7.0\AuroraQY.BlazorBlog.Web.csproj.CoreCompileInputs.cache
+D:\0Study\BlazorBlog\AuroraQY.BlazorBlog.Web\obj\Debug\net7.0\AuroraQY.BlazorBlog.Web.MvcApplicationPartsAssemblyInfo.cache
+D:\0Study\BlazorBlog\AuroraQY.BlazorBlog.Web\obj\Debug\net7.0\AuroraQY.BlazorBlog.Web.RazorAssemblyInfo.cache
+D:\0Study\BlazorBlog\AuroraQY.BlazorBlog.Web\obj\Debug\net7.0\AuroraQY.BlazorBlog.Web.RazorAssemblyInfo.cs
