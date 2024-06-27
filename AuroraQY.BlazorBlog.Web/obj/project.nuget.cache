@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "QOIaxJu11cg=",
+  "success": true,
+  "projectFilePath": "D:\\0Study\\BlazorBlog\\AuroraQY.BlazorBlog.Web\\AuroraQY.BlazorBlog.Web.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\LiXiao\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.19\\microsoft.netcore.app.ref.7.0.19.nupkg.sha512",
+    "C:\\Users\\LiXiao\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.19\\microsoft.windowsdesktop.app.ref.7.0.19.nupkg.sha512",
+    "C:\\Users\\LiXiao\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.19\\microsoft.aspnetcore.app.ref.7.0.19.nupkg.sha512",
+    "C:\\Users\\LiXiao\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.19\\microsoft.netcore.app.host.win-x64.7.0.19.nupkg.sha512"
+  ],
+  "logs": []
+}
