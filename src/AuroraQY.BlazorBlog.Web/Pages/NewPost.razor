@@ -1,0 +1,96 @@
+@page "/new-post"
+@inject NavigationManager NavigationManager
+@inject IPostService PostService
+@inject IJSRuntime JSRuntime
+
+<div class="new-post-container">
+    <div class="edit-section">
+        <h3>创建新博客</h3>
+
+        <EditForm Model="@newPost" OnValidSubmit="HandleValidSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="form-group">
+                <label for="title">标题</label>
+                <InputText id="title" @bind-Value="newPost.Title" class="form-control" />
+                <ValidationMessage For="@(() => newPost.Title)" />
+            </div>
+
+            <div class="form-group">
+                <label for="summary">摘要</label>
+                <InputTextArea id="summary" @bind-Value="newPost.Summary" class="form-control" rows="3" />
+                <ValidationMessage For="@(() => newPost.Summary)" />
+            </div>
+
+            <div class="form-group">
+                <label for="imageUrl">图片 URL</label>
+                <InputText id="imageUrl" @bind-Value="newPost.ImageUrl" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label for="content">内容</label>
+                <InputTextArea id="content" @bind-Value="newPost.Content" class="form-control" rows="15"
+                    @oninput="OnContentChange" />
+                <ValidationMessage For="@(() => newPost.Content)" />
+            </div>
+
+            <div class="markdown-tools">
+                <button type="button" class="btn btn-secondary" @onclick="InsertBold">粗体</button>
+                <button type="button" class="btn btn-secondary" @onclick="InsertItalic">斜体</button>
+                <button type="button" class="btn btn-secondary" @onclick="InsertLink">链接</button>
+                <button type="button" class="btn btn-secondary" @onclick="InsertImage">图片</button>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">发布博客</button>
+        </EditForm>
+    </div>
+
+    <div class="preview-section">
+        <h3>预览</h3>
+        <div class="markdown-preview">
+            @((MarkupString)renderedContent)
+        </div>
+    </div>
+</div>
+
+@code {
+    private PostDto newPost = new PostDto();
+    private string renderedContent = "Markdown 渲染预览区域";
+
+    private async Task HandleValidSubmit()
+    {
+        newPost.CreatedAt = DateTime.UtcNow;
+        await PostService.CreatePostAsync(newPost);
+        NavigationManager.NavigateTo("/");
+    }
+
+    // 其他代码保持不变...
+    private void OnContentChange(ChangeEventArgs e)
+    {
+        newPost.Content = e.Value.ToString();
+        // 这里应该调用 Markdown 渲染函数
+        // 暂时用简单的 HTML 转义代替
+        renderedContent = System.Net.WebUtility.HtmlEncode(newPost.Content).Replace("\n", "<br>");
+    }
+
+    private async Task InsertBold()
+    {
+        await JSRuntime.InvokeVoidAsync("insertText", "content", "**粗体文本**");
+    }
+
+    private async Task InsertItalic()
+    {
+        await JSRuntime.InvokeVoidAsync("insertText", "content", "*斜体文本*");
+    }
+
+    private async Task InsertLink()
+    {
+        await JSRuntime.InvokeVoidAsync("insertText", "content", "[链接文本](http://example.com)");
+    }
+
+    private async Task InsertImage()
+    {
+        await JSRuntime.InvokeVoidAsync("insertText", "content", "![图片描述](http://example.com/image.jpg)");
+    }
+}

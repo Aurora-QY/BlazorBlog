@@ -7,6 +7,8 @@ namespace AuroraQY.BlazorBlog.Domain.Interfaces
     public interface IPostRepository
     {
         Task<Post> GetByIdAsync(int id);
+
+        Task<IEnumerable<Post>> GetLatestPostsAsync(int count);
         Task<IEnumerable<Post>> GetAllAsync();
         Task AddAsync(Post post);
         Task UpdateAsync(Post post);

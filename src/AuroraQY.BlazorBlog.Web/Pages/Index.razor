@@ -1,5 +1,101 @@
 ﻿@page "/"
+@using AuroraQY.BlazorBlog.Application.Interfaces
+@using AuroraQY.BlazorBlog.Application.DTOs
+@inject IPostService PostService
 
-<h1>Welcome to AuroraQY Blog</h1>
+<header class="top-navbar">
+    <nav>
+        <ul>
+            <li><a href="/">首页</a></li>
+            <li><a href="/fortune">今日运势</a></li>
+            <li><a href="/new-post">新增博文</a></li>
+        </ul>
+        <div class="search-bar">
+            <input type="text" placeholder="搜索...">
+            <button type="submit">搜索</button>
+        </div>
+    </nav>
+</header>
 
-<PostList />
+<div class="evan-big-banner">
+    <div class="author-info">
+        <img src="/assets/avatar.png" alt="Author Avatar" class="author-avatar">
+        <h1 class="author-name">AuroraQY</h1>
+        <h4 class="author-name">LiXiao</h4>
+        <h2 class="author-description">21岁,是学生/TJ大学软件工程大三在读/(准)腾讯cdg部门Golang后台工程师/前端什么的一点都不会写啦</h2>
+    </div>
+    <div class="infomation">
+        <div id="EvanBigBanner_Title" class="title">
+            <span id="EvanBigBanner_SubTitle" style="opacity: 0;">
+                AuroraQY的个人博客
+            </span>
+        </div>
+        <div class="desctitle hitokoto_desctitle">
+            <div id="HitokotoText" class="motto joe_motto hitokoto_text">
+                <!-- 一言内容 -->
+            </div>
+            <div id="HitokotoForm" class="motto joe_motto hitokoto_form">
+                <!-- 一言作者 -->
+            </div>
+        </div>
+    </div>
+    <section class="evan-big-banner_bottom">
+        <svg id="EvanWaves" class="waves-svg" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none"
+            shape-rendering="auto">
+            <!-- 波浪SVG内容 -->
+        </svg>
+    </section>
+</div>
+
+<div class="joe_container joe_main_container page-index animated showInUp">
+    <div class="joe_main">
+        <div class="joe_index">
+            <div class="joe_index__article">
+                <div class="joe_index__title">
+                    <ul class="joe_index__title-title passage-list-tabs">
+                        <li class="item active" data-type="1">最新文章</li>
+                        <li class="item" data-type="2">热门文章</li>
+                        <li class="item" data-type="3">最近更新</li>
+                        <li class="item" data-type="4">最多点赞</li>
+                        <li class="line"></li>
+                    </ul>
+                    <div class="joe_index__title-notice">
+                        <!-- 公告内容 -->
+                    </div>
+                </div>
+                <div class="joe_index__list">
+                    <ul class="joe_list"></ul>
+                    <ul class="joe_list__loading">
+                        <!-- 加载动画 -->
+                    </ul>
+                    <div class="joe_empty hide">
+                        <!-- 空状态显示 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="joe_load" loading="true">加载中...</div>
+    </div>
+    <aside class="joe_aside">
+        <section class="joe_aside__item author">
+            <!-- 作者信息内容 -->
+        </section>
+        <section class="joe_aside__item notice">
+            <!-- 公告信息内容 -->
+        </section>
+        <section class="joe_aside__item qrcode">
+            <!-- 二维码内容 -->
+        </section>
+        <!-- 其他侧边栏模块 -->
+    </aside>
+</div>
+
+@code {
+    private IEnumerable<PostDto> posts = new List<PostDto>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        posts = await PostService.GetLatestPostsAsync(5);
+    }
+}

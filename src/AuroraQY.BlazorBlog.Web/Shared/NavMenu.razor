@@ -1,73 +1,32 @@
-﻿@* <div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">AuroraQY.BlazorBlog.Web</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</div>
+﻿@inject NavigationManager NavigationManager
 
-<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="oi oi-plus" aria-hidden="true"></span> Counter
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="fetchdata">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
-            </NavLink>
+<header class="top-navbar">
+    <nav>
+        <ul>
+            <li>
+                <NavLink href="" Match="NavLinkMatch.All">首页</NavLink>
+            </li>
+            <li>
+                <NavLink href="fortune">今日运势</NavLink>
+            </li>
+            <li>
+                <NavLink href="new-post">新增博文</NavLink>
+            </li>
+        </ul>
+        <div class="search-bar">
+            <input type="text" placeholder="搜索..." @bind="searchQuery">
+            <button @onclick="PerformSearch">搜索</button>
         </div>
     </nav>
-</div>
+</header>
 
 @code {
-    private bool collapseNavMenu = true;
+    private string searchQuery = "";
 
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
+    private void PerformSearch()
     {
-        collapseNavMenu = !collapseNavMenu;
-    }
-} *@
-
-
-<div class="top-row pl-4 navbar navbar-dark">
-    <a class="navbar-brand" href="">AuroraQY Blog</a>
-    <button class="navbar-toggler" @onclick="ToggleNavMenu">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-</div>
-
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <ul class="nav flex-column">
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="posts">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Posts
-            </NavLink>
-        </li>
-    </ul>
-</div>
-
-@code {
-    private bool collapseNavMenu = true;
-
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
+        // 这里实现搜索逻辑
+        // 例如，导航到搜索结果页面
+        NavigationManager.NavigateTo($"/search?q={searchQuery}");
     }
 }

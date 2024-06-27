@@ -1,0 +1,16 @@
+{
+    "name": "My Personal Blog",
+    "short_name": "Blog",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#3f51b5",
+    "description": "A personal blog created with Blazor",
+    "icons": [
+        {
+            "src": "images/icons/favicon.ico",
+            "sizes": "192x192",
+            "type": "image/ico"
+        }
+    ]
+}

@@ -7,14 +7,22 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AuroraQY Blog</title>
     <base href="~/" />
+
+    <link rel="icon" type="image/x-icon" sizes="128x128" href="favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
     <link href="css/site.css" rel="stylesheet" />
+    <link href="css/index.css" rel="stylesheet" />
+    <link href="css/post.css" rel="stylesheet" />
 </head>
+
 <body>
     <app>
         <component type="typeof(App)" render-mode="ServerPrerendered" />
@@ -22,4 +30,17 @@
 
     <script src="_framework/blazor.server.js"></script>
 </body>
+
 </html>
+
+<script>
+    function insertText(elementId, text) {
+        var element = document.getElementById(elementId);
+        var start = element.selectionStart;
+        var end = element.selectionEnd;
+        var value = element.value;
+        element.value = value.substring(0, start) + text + value.substring(end);
+        element.selectionStart = element.selectionEnd = start + text.length;
+        element.focus();
+    }
+</script>

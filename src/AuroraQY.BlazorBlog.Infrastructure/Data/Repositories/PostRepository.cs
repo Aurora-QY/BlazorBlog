@@ -25,6 +25,16 @@ namespace AuroraQY.BlazorBlog.Infrastructure.Data.Repositories
                 .FirstOrDefaultAsync(p => p.Id == id);
         }
 
+        // 降序就是获取最新的
+        public async Task<IEnumerable<Post>> GetLatestPostsAsync(int count)
+        {
+            return await _context.Posts
+                .OrderByDescending(p => p.CreatedAt)
+                .Take(count)
+                .Include(p => p.Author)
+                .ToListAsync();
+        }
+
         public async Task<IEnumerable<Post>> GetAllAsync()
         {
             return await _context.Posts.Include(p => p.Author).ToListAsync();
