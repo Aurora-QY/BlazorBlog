@@ -5,5 +5,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\AuroraQY.BlazorBlog.Domain\AuroraQY.BlazorBlog.Domain.csproj" />
+  </ItemGroup>
+  
 
 </Project>

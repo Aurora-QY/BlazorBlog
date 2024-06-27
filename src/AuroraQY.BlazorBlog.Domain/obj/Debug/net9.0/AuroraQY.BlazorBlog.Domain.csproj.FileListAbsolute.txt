@@ -1,0 +1,11 @@
+D:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Domain\bin\Debug\net9.0\AuroraQY.BlazorBlog.Domain.deps.json
+D:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Domain\bin\Debug\net9.0\AuroraQY.BlazorBlog.Domain.dll
+D:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Domain\bin\Debug\net9.0\AuroraQY.BlazorBlog.Domain.pdb
+D:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Domain\obj\Debug\net9.0\AuroraQY.BlazorBlog.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Domain\obj\Debug\net9.0\AuroraQY.BlazorBlog.Domain.AssemblyInfoInputs.cache
+D:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Domain\obj\Debug\net9.0\AuroraQY.BlazorBlog.Domain.AssemblyInfo.cs
+D:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Domain\obj\Debug\net9.0\AuroraQY.BlazorBlog.Domain.csproj.CoreCompileInputs.cache
+D:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Domain\obj\Debug\net9.0\AuroraQY.BlazorBlog.Domain.dll
+D:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Domain\obj\Debug\net9.0\refint\AuroraQY.BlazorBlog.Domain.dll
+D:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Domain\obj\Debug\net9.0\AuroraQY.BlazorBlog.Domain.pdb
+D:\0Study\BlazorBlog\src\AuroraQY.BlazorBlog.Domain\obj\Debug\net9.0\ref\AuroraQY.BlazorBlog.Domain.dll

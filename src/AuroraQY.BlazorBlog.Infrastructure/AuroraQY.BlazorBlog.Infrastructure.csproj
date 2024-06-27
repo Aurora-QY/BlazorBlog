@@ -5,6 +5,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AuroraQY.BlazorBlog.Domain\AuroraQY.BlazorBlog.Domain.csproj" />
+
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0-preview.1"/>
   </ItemGroup>
 </Project>

@@ -1,10 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AuroraQY.BlazorBlog.Domain\AuroraQY.BlazorBlog.Domain.csproj" />
+    <ProjectReference Include="..\AuroraQY.BlazorBlog.Application\AuroraQY.BlazorBlog.Application.csproj" />
+    <ProjectReference Include="..\AuroraQY.BlazorBlog.Infrastructure\AuroraQY.BlazorBlog.Infrastructure.csproj" />
+
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0-preview.1"/>
   </ItemGroup>
 </Project>

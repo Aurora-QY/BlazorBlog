@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("AuroraQY.BlazorBlog.Web")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("AuroraQY.BlazorBlog.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d308ec2b0c62939ad4c7db3e05ada1c516c4c834")]
-[assembly: System.Reflection.AssemblyProductAttribute("AuroraQY.BlazorBlog.Web")]
-[assembly: System.Reflection.AssemblyTitleAttribute("AuroraQY.BlazorBlog.Web")]
+[assembly: System.Reflection.AssemblyProductAttribute("AuroraQY.BlazorBlog.Domain")]
+[assembly: System.Reflection.AssemblyTitleAttribute("AuroraQY.BlazorBlog.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // 由 MSBuild WriteCodeFragment 类生成。

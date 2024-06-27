@@ -268,19 +268,6 @@
           }
         }
       },
-      "AuroraQY.BlazorBlog.Application/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v9.0",
-        "dependencies": {
-          "AuroraQY.BlazorBlog.Domain": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/AuroraQY.BlazorBlog.Application.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/AuroraQY.BlazorBlog.Application.dll": {}
-        }
-      },
       "AuroraQY.BlazorBlog.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v9.0",
@@ -289,20 +276,6 @@
         },
         "runtime": {
           "bin/placeholder/AuroraQY.BlazorBlog.Domain.dll": {}
-        }
-      },
-      "AuroraQY.BlazorBlog.Infrastructure/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v9.0",
-        "dependencies": {
-          "AuroraQY.BlazorBlog.Domain": "1.0.0",
-          "Pomelo.EntityFrameworkCore.MySql": "9.0.0-preview.1"
-        },
-        "compile": {
-          "bin/placeholder/AuroraQY.BlazorBlog.Infrastructure.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/AuroraQY.BlazorBlog.Infrastructure.dll": {}
         }
       }
     }
@@ -727,27 +700,15 @@
         "pomelo.entityframeworkcore.mysql.nuspec"
       ]
     },
-    "AuroraQY.BlazorBlog.Application/1.0.0": {
-      "type": "project",
-      "path": "../AuroraQY.BlazorBlog.Application/AuroraQY.BlazorBlog.Application.csproj",
-      "msbuildProject": "../AuroraQY.BlazorBlog.Application/AuroraQY.BlazorBlog.Application.csproj"
-    },
     "AuroraQY.BlazorBlog.Domain/1.0.0": {
       "type": "project",
       "path": "../AuroraQY.BlazorBlog.Domain/AuroraQY.BlazorBlog.Domain.csproj",
       "msbuildProject": "../AuroraQY.BlazorBlog.Domain/AuroraQY.BlazorBlog.Domain.csproj"
-    },
-    "AuroraQY.BlazorBlog.Infrastructure/1.0.0": {
-      "type": "project",
-      "path": "../AuroraQY.BlazorBlog.Infrastructure/AuroraQY.BlazorBlog.Infrastructure.csproj",
-      "msbuildProject": "../AuroraQY.BlazorBlog.Infrastructure/AuroraQY.BlazorBlog.Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
-      "AuroraQY.BlazorBlog.Application >= 1.0.0",
       "AuroraQY.BlazorBlog.Domain >= 1.0.0",
-      "AuroraQY.BlazorBlog.Infrastructure >= 1.0.0",
       "Pomelo.EntityFrameworkCore.MySql >= 9.0.0-preview.1"
     ]
   },
@@ -758,11 +719,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\0Study\\BlazorBlog\\src\\AuroraQY.BlazorBlog.Web\\AuroraQY.BlazorBlog.Web.csproj",
-      "projectName": "AuroraQY.BlazorBlog.Web",
-      "projectPath": "D:\\0Study\\BlazorBlog\\src\\AuroraQY.BlazorBlog.Web\\AuroraQY.BlazorBlog.Web.csproj",
+      "projectUniqueName": "D:\\0Study\\BlazorBlog\\src\\AuroraQY.BlazorBlog.Infrastructure\\AuroraQY.BlazorBlog.Infrastructure.csproj",
+      "projectName": "AuroraQY.BlazorBlog.Infrastructure",
+      "projectPath": "D:\\0Study\\BlazorBlog\\src\\AuroraQY.BlazorBlog.Infrastructure\\AuroraQY.BlazorBlog.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\LiXiao\\.nuget\\packages\\",
-      "outputPath": "D:\\0Study\\BlazorBlog\\src\\AuroraQY.BlazorBlog.Web\\obj\\",
+      "outputPath": "D:\\0Study\\BlazorBlog\\src\\AuroraQY.BlazorBlog.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -784,14 +745,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\0Study\\BlazorBlog\\src\\AuroraQY.BlazorBlog.Application\\AuroraQY.BlazorBlog.Application.csproj": {
-              "projectPath": "D:\\0Study\\BlazorBlog\\src\\AuroraQY.BlazorBlog.Application\\AuroraQY.BlazorBlog.Application.csproj"
-            },
             "D:\\0Study\\BlazorBlog\\src\\AuroraQY.BlazorBlog.Domain\\AuroraQY.BlazorBlog.Domain.csproj": {
               "projectPath": "D:\\0Study\\BlazorBlog\\src\\AuroraQY.BlazorBlog.Domain\\AuroraQY.BlazorBlog.Domain.csproj"
-            },
-            "D:\\0Study\\BlazorBlog\\src\\AuroraQY.BlazorBlog.Infrastructure\\AuroraQY.BlazorBlog.Infrastructure.csproj": {
-              "projectPath": "D:\\0Study\\BlazorBlog\\src\\AuroraQY.BlazorBlog.Infrastructure\\AuroraQY.BlazorBlog.Infrastructure.csproj"
             }
           }
         }
@@ -828,9 +783,6 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
-          "Microsoft.AspNetCore.App": {
-            "privateAssets": "none"
-          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }

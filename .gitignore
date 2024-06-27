@@ -1,6 +1,4 @@
 
 *.cache
-/src/AuroraQY.BlazorBlog.Application/obj
-/src/AuroraQY.BlazorBlog.Domain/obj
-/src/AuroraQY.BlazorBlog.Infrastructure/obj
-/src/AuroraQY.BlazorBlog.Web/obj
+*/obj
+*/bin
