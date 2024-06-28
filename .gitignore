@@ -9,3 +9,6 @@
 /src/AuroraQY.BlazorBlog.Domain/bin
 /src/AuroraQY.BlazorBlog.Infrastructure/bin
 /src/AuroraQY.BlazorBlog.Web/bin
+/.vs
+/src/AuroraQY.BlazorBlog.CLRMarkdownRenderer/obj
+/src/AuroraQY.BlazorBlog.CLRMarkdownRenderer/x64

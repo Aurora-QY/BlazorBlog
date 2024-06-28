@@ -1,4 +1,5 @@
 @page "/fortune"
+@inject IWebHostEnvironment WebHostEnvironment
 
 @functions {
     private int score;
@@ -16,7 +17,19 @@
 "大凶: 今天要小心行事，避免冒险。"
 };
 
-    private static readonly string[] images = Directory.GetFiles("wwwroot/images/fortune");
+
+    private string[] images = Directory.GetFiles("wwwroot/assets/fortune");
+
+    // 使用LinQ匹配路径
+    // eg: wwwroot/assets/fortune/1.png->assets/fortune/1.png
+    protected override void OnInitialized()
+    {
+        string fortunePath = Path.Combine(WebHostEnvironment.WebRootPath, "assets", "fortune");
+        images = Directory.GetFiles(fortunePath)
+        .Select(Path.GetFileName)
+        .Select(f => $"/assets/fortune/{f}")
+        .ToArray();
+    }
 
     private static readonly Random random = new Random();
 
@@ -80,6 +93,7 @@
     }
 
     .fortune-button:hover {
+        using System.Runtime.InteropServices;
         background-color: #0056b3;
     }
 

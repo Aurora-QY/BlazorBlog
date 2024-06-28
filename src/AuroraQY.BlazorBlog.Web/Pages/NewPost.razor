@@ -4,6 +4,13 @@
 @inject IPostService PostService
 @inject IJSRuntime JSRuntime
 
+@* 姑且用这个当顶边距吧 *@
+<div>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+</div>
 <div class="new-post-container">
     <div class="edit-section">
         <h3>创建新博客</h3>
@@ -71,6 +78,25 @@
         newPost.ImageUrl = "http://imgapi.xl0408.top/index.php";
         newPost.Content = @"# 欢迎使用 Markdown
 
+## 这是二级标题
+
+### 这是三级标题
+
+这是普通段落文本。**这是粗体**，*这是斜体*，***这是粗斜体***。
+
+- 这是无序列表项 1
+- 这是无序列表项 2
+- 这是嵌套列表项
+
+1. 这是有序列表项 1
+2. 这是有序列表项 2
+
+> 这是一段引用文本。
+
+[这是一个链接:同济1系统](https://1.tongji.edu.cn)
+
+![这是一张图片:随机图片](http://imgapi.xl0408.top/index.php)
+
 ```csharp
 public class Example
 {
@@ -78,7 +104,7 @@ public void Method()
 {
 Console.WriteLine(""Hello, World!"");
 }
-}```";
+}";
 
         // 初始化时也更新预览
         UpdatePreview();

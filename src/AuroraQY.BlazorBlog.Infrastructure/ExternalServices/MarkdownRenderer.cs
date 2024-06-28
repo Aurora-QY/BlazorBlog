@@ -13,18 +13,19 @@ namespace AuroraQY.BlazorBlog.Infrastructure.ExternalServices
             var result = Markdown.ToHtml(markdown, pipeline);
             return result;
         }
-        // [DllImport("MarkdownRendererLib.dll", CallingConvention = CallingConvention.Cdecl)]
-        // private static extern IntPtr RenderMarkdown(string markdown);
 
-        // [DllImport("MarkdownRendererLib.dll", CallingConvention = CallingConvention.Cdecl)]
-        // private static extern void FreeRenderedMarkdown(IntPtr renderedMarkdown);
+        [DllImport("MarkdownRendererLib.dll", CallingConvention = CallingConvention.Cdecl)]
+        private static extern IntPtr RenderMarkdown(string markdown);
 
-        // public string RenderToHtml(string markdown)
-        // {
-        //     IntPtr renderedPtr = RenderMarkdown(markdown);
-        //     string result = Marshal.PtrToStringAnsi(renderedPtr);
-        //     FreeRenderedMarkdown(renderedPtr);
-        //     return result;
-        // }
+        [DllImport("MarkdownRendererLib.dll", CallingConvention = CallingConvention.Cdecl)]
+        private static extern void FreeRenderedMarkdown(IntPtr renderedMarkdown);
+
+        public string RenderToHtml2(string markdown)
+        {
+            IntPtr renderedPtr = RenderMarkdown(markdown);
+            string result = Marshal.PtrToStringAnsi(renderedPtr);
+            FreeRenderedMarkdown(renderedPtr);
+            return result;
+        }
     }
 }
