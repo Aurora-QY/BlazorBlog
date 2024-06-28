@@ -1,57 +1,120 @@
 @page "/chatbot"
 @inject ChatService ChatService
-
-<h3>ChatBot</h3>
-
-<div class="chat-container">
-    @foreach (var message in messages)
-    {
-        <div class="message @(message.Sender == "User" ? "user-message" : "bot-message")">
-            <strong>@message.Sender:</strong> @message.Content
-        </div>
-    }
+<div>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
 </div>
+<div class="chat-outer-container">
+    <h3 class="chat-title">ChatBot</h3>
+    <h2>本部分采用DataScope非官方库开发</h2>
+    <h2><a href="https://github.com/cnblogs/dashscope-sdk">Dashscope-SDK</a></h2>
 
-<div class="input-container">
-    <input @bind="userInput" @bind:event="oninput" @onkeyup="HandleKeyUp" placeholder="Type a message..." />
-    <button @onclick="SendMessage">Send</button>
+    <div class="chat-container">
+        @foreach (var message in messages)
+        {
+            <div class="message @(message.Sender == "User" ? "user-message" : "bot-message")">
+                <img src="@(message.Sender == "User" ? "/avatar.png" : "/chatbot.png")" alt="@message.Sender avatar"
+                    class="avatar" />
+                <div class="message-content">
+                    @message.Content
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="input-container">
+        <input @bind="userInput" @bind:event="oninput" @onkeyup="HandleKeyUp" placeholder="Type a message..." />
+        <button @onclick="SendMessage" class="send-button">
+            <span class="oi oi-arrow-right" aria-hidden="true"></span>
+        </button>
+    </div>
 </div>
 
 <style>
+    .chat-outer-container {
+        width: 60%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        padding: 20px;
+    }
+
+    .chat-title {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
     .chat-container {
-        height: 400px;
+        flex-grow: 1;
         overflow-y: auto;
         border: 1px solid #ccc;
-        padding: 10px;
-        margin-bottom: 10px;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: #f8f9fa;
     }
 
     .message {
-        margin-bottom: 10px;
-        padding: 5px;
-        border-radius: 5px;
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 20px;
     }
 
     .user-message {
-        background-color: #e6f3ff;
-        text-align: right;
+        flex-direction: row-reverse;
     }
 
-    .bot-message {
-        background-color: #f0f0f0;
+    .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin: 0 10px;
+    }
+
+    .message-content {
+        background-color: #ffffff;
+        padding: 10px 15px;
+        border-radius: 18px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        font-size: 16px;
+        max-width: 70%;
+    }
+
+    .user-message .message-content {
+        background-color: #007bff;
+        color: white;
     }
 
     .input-container {
         display: flex;
+        margin-top: auto;
     }
 
     input {
         flex-grow: 1;
-        padding: 5px;
+        padding: 10px 15px;
+        font-size: 16px;
+        border: 1px solid #ced4da;
+        border-radius: 25px 0 0 25px;
+        outline: none;
     }
 
-    button {
-        padding: 5px 10px;
+    .send-button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 0 25px 25px 0;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    .send-button:hover {
+        background-color: #0056b3;
     }
 </style>
 
@@ -69,8 +132,8 @@
 
             StateHasChanged();
 
-            @* var response = await ChatService.GetResponseAsync(userMessage); *@
-            var response = Environment.GetEnvironmentVariable("DASHSCOPE_APIKEY");
+            var response = await ChatService.GetResponseAsync(userMessage);
+            @* var response = Environment.GetEnvironmentVariable("DASHSCOPE_APIKEY"); *@
             messages.Add(new ChatMessage("Bot", response));
 
             StateHasChanged();

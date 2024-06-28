@@ -16,6 +16,18 @@ namespace AuroraQY.BlazorBlog.Infrastructure.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            // 初始化默认用户
+            modelBuilder
+                .Entity<User>()
+                .HasData(
+                    new User
+                    {
+                        Id = 1,
+                        Username = "admin",
+                        PasswordHash = "what"
+                    }
+                );
+
             modelBuilder.Entity<User>(entity =>
             {
                 entity.OwnsOne(u => u.Email);
