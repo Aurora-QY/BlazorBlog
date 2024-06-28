@@ -1,0 +1,101 @@
+@page "/fortune"
+
+@functions {
+    private int score;
+    private string fortuneMessage;
+    private string imageUrl;
+    private bool isFortuneGenerated = false;
+
+    private static readonly string[] fortunes = new[]
+    {
+"大吉: 今天是你的幸运日！一切都会顺利。",
+"中吉: 你会遇到一些好事，请保持积极的心态。",
+"小吉: 事情会慢慢好转，耐心等待。",
+"吉: 今天运势不错，可以尝试一些新的事情。",
+"凶: 可能会有一些小麻烦，但不要担心。",
+"大凶: 今天要小心行事，避免冒险。"
+};
+
+    private static readonly string[] images = Directory.GetFiles("wwwroot/images/fortune");
+
+    private static readonly Random random = new Random();
+
+    private void GenerateFortune()
+    {
+        // TODO: 换成真实的用户id
+        var UserId = "1";
+        var beijingNow = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.UtcNow, "China Standard Time");
+
+        var seed = UserId.GetHashCode() ^ beijingNow.Date.GetHashCode();
+        var rng = new Random(seed);
+
+        score = rng.Next(1, 101);
+        int index = score / (100 / fortunes.Length);
+        fortuneMessage = fortunes[index];
+        imageUrl = images[random.Next(images.Length)];
+        isFortuneGenerated = true;
+    }
+}
+
+<div class="fortune-container">
+    <div class="left-panel">
+        <button class="fortune-button" @onclick="GenerateFortune">点击生成今日运势</button>
+    </div>
+    @if (isFortuneGenerated)
+    {
+        <div class="right-panel">
+            <img src="@imageUrl" alt="Fortune Image" class="fortune-image" />
+            <div class="fortune-text">
+                <p>分数: @score</p>
+                <p>运势: @fortuneMessage</p>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .fortune-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .left-panel {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .fortune-button {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: #007bff;
+        color: white;
+        font-size: 18px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .fortune-button:hover {
+        background-color: #0056b3;
+    }
+
+    .right-panel {
+        flex: 1;
+        text-align: center;
+    }
+
+    .fortune-image {
+        max-width: 100%;
+        max-height: 300px;
+        margin-bottom: 20px;
+    }
+
+    .fortune-text {
+        font-size: 20px;
+        font-weight: bold;
+    }
+</style>

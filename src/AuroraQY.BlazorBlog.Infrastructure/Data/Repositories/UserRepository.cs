@@ -8,37 +8,42 @@ namespace AuroraQY.BlazorBlog.Infrastructure.Data.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        private readonly BlogDbContext _context;
+        private readonly IDbContextFactory<BlogDbContext> _contextFactory;
 
-        public UserRepository(BlogDbContext context)
+        public UserRepository(IDbContextFactory<BlogDbContext> contextFactory)
         {
-            _context = context;
+            _contextFactory = contextFactory;
         }
 
         public async Task<User> GetByIdAsync(int id)
         {
+            using var _context = await _contextFactory.CreateDbContextAsync();
             return await _context.Users.FindAsync(id);
         }
 
         public async Task<User> GetByUsernameAsync(string username)
         {
+            using var _context = await _contextFactory.CreateDbContextAsync();
             return await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
         }
 
         public async Task AddAsync(User user)
         {
+            using var _context = await _contextFactory.CreateDbContextAsync();
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
         }
 
         public async Task UpdateAsync(User user)
         {
+            using var _context = await _contextFactory.CreateDbContextAsync();
             _context.Users.Update(user);
             await _context.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(int id)
         {
+            using var _context = await _contextFactory.CreateDbContextAsync();
             var user = await _context.Users.FindAsync(id);
             if (user != null)
             {

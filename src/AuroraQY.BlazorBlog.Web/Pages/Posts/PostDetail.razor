@@ -1,20 +1,28 @@
-@page "/posts/{Id:int}"
-
+@page "/post/{Id:int}"
 @inject IPostService PostService
 @inject MarkdownRenderer MarkdownRenderer
 
-@if (post == null)
-{
-    <p>Loading...</p>
-}
-else
-{
-    <h2>@post.Title</h2>
-    <p>By @post.AuthorName on @post.CreatedAt.ToShortDateString()</p>
-    <div class="post-content">
-        @((MarkupString)MarkdownRenderer.RenderToHtml(post.Content))
-    </div>
-}
+<div class="post-detail">
+    @if (post == null)
+    {
+        <p>Loading...</p>
+    }
+    else
+    {
+        <h1 class="post-title">@post.Title</h1>
+        <div class="post-meta">
+            <span>By @post.AuthorName</span>
+            <span>on @post.CreatedAt.ToLongDateString()</span>
+        </div>
+        @if (!string.IsNullOrEmpty(post.ImageUrl))
+        {
+            <img src="@post.ImageUrl" alt="@post.Title" class="post-image" />
+        }
+        <div class="post-content">
+            @((MarkupString)MarkdownRenderer.RenderToHtml(post.Content))
+        </div>
+    }
+</div>
 
 @code {
     [Parameter]

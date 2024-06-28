@@ -15,11 +15,13 @@ namespace AuroraQY.BlazorBlog.Infrastructure
             IConfiguration configuration
         )
         {
-            services.AddDbContext<BlogDbContext>(
+            // 使用 PooledDbContextFactory
+            services.AddPooledDbContextFactory<BlogDbContext>(
                 options =>
                     options.UseMySql(
                         configuration.GetConnectionString("DefaultConnection"),
-                        new MySqlServerVersion(new Version(8, 0, 21))
+                        new MySqlServerVersion(new Version(8, 0, 21)),
+                        mySqlOptions => mySqlOptions.EnableRetryOnFailure()
                     )
             );
 

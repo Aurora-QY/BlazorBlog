@@ -1,7 +1,7 @@
 @page "/posts"
 @inject IPostService PostService
 
-<h2>Latest Posts</h2>
+@* <h2>Latest Posts</h2> *@
 
 @if (posts == null)
 {
@@ -16,14 +16,15 @@ else
     <div class="post-list">
         @foreach (var post in posts)
         {
-            <div class="post-item">
-                <h3><a href="/posts/@post.Id">@post.Title</a></h3>
-                <p>By @post.AuthorName on @post.CreatedAt.ToShortDateString()</p>
-                @if (!string.IsNullOrEmpty(post.Summary))
-                {
-                    <p>@post.Summary</p>
-                }
-            </div>
+            <a href="/post/@post.Id" class="post-card">
+                <div class="post-image" style="background-image: url('@(post.ImageUrl ?? "/images/default-post-image.jpg")')">
+                </div>
+                <div class="post-content">
+                    <h3 class="post-title">@post.Title</h3>
+                    <p class="post-meta">By @post.AuthorName on @post.CreatedAt.ToShortDateString()</p>
+                    <p class="post-summary">@post.Summary</p>
+                </div>
+            </a>
         }
     </div>
 }

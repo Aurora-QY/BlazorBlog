@@ -19,8 +19,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
-// builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
-
 // var config = new MapperConfiguration(cfg =>
 // {
 //     cfg.AddProfile<MappingProfile>();
@@ -35,27 +33,28 @@ builder.Services.AddServerSideBlazor();
 //         )
 // );
 
-// 使用 PooledDbContextFactory
-builder.Services.AddPooledDbContextFactory<BlogDbContext>(
-    options =>
-        options.UseMySql(
-            builder.Configuration.GetConnectionString("DefaultConnection"),
-            new MySqlServerVersion(new Version(8, 0, 21)),
-            mySqlOptions => mySqlOptions.EnableRetryOnFailure()
-        )
-);
 
-// 注册 Repository 和 Service
+// 注册Service(Repository在AddInfrastructure内注册)
 builder.Services.AddScoped<IPostRepository>(
     sp => new PostRepository(sp.GetRequiredService<IDbContextFactory<BlogDbContext>>())
 );
 builder.Services.AddScoped<IPostService, PostService>();
 
-builder.Services.AddAutoMapper(typeof(Program).Assembly, typeof(PostService).Assembly);
-builder.Services.AddScoped<IPostService, PostService>();
+// 注册
 builder.Services.AddSingleton<MarkdownRenderer>();
 
+// builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
+
+// builder.Services.AddAutoMapper(typeof(Program).Assembly, typeof(MappingProfile).Assembly);
+builder.Services.AddAutoMapper(typeof(Program).Assembly, typeof(PostService).Assembly);
+
 // builder.Services.AddApplication();
+
+// 这里包括了数据库和Repository的注册
+// builder.Services.AddScoped<IPostRepository>(
+//     sp => new PostRepository(sp.GetRequiredService<IDbContextFactory<BlogDbContext>>())
+// );
+
 builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();

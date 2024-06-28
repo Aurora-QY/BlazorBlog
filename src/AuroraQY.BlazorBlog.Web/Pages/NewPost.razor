@@ -1,5 +1,6 @@
 @page "/new-post"
 @inject NavigationManager NavigationManager
+@inject MarkdownRenderer MarkdownRenderer
 @inject IPostService PostService
 @inject IJSRuntime JSRuntime
 
@@ -65,10 +66,19 @@
     {
         // 设置默认值
         var currentTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-        newPost.Title = $"Test {currentTime}";
-        newPost.Summary = $"{currentTime} Hello World!";
+        newPost.Title = $"这是一条测试~~~";
+        newPost.Summary = $"这是一条摘要~Hello World!";
         newPost.ImageUrl = "http://imgapi.xl0408.top/index.php";
-        newPost.Content = "Bang Dream it's mygo";
+        newPost.Content = @"# 欢迎使用 Markdown
+
+```csharp
+public class Example
+{
+public void Method()
+{
+Console.WriteLine(""Hello, World!"");
+}
+}```";
 
         // 初始化时也更新预览
         UpdatePreview();
@@ -114,9 +124,8 @@
 
     private void UpdatePreview()
     {
-        // 这里应该调用 Markdown 渲染函数
-        // 暂时用简单的 HTML 转义代替
-        renderedContent = System.Net.WebUtility.HtmlEncode(newPost.Content).Replace("\n", "<br>");
+
+        renderedContent = MarkdownRenderer.RenderToHtml(newPost.Content);
     }
 
     private async Task InsertBold()

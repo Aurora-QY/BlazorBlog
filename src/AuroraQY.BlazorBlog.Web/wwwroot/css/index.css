@@ -1,3 +1,17 @@
+/* 动态长度页面 */
+body,
+html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.main-content {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 /* 大型 banner 样式 */
 .evan-big-banner {
     position: relative;
@@ -18,9 +32,9 @@
 
 /* 作者头像样式 */
 .author-avatar {
-    width: 300px;
+    width: 250px;
     /* 设置所需的尺寸 */
-    height: 300px;
+    height: 250px;
     border-radius: 50%;
     /* 使图片变为圆形 */
     object-fit: cover;

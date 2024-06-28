@@ -60,3 +60,154 @@
     padding: 10px;
     min-height: 300px;
 }
+
+.post-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.post-card {
+    display: flex;
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.post-image {
+    width: 200px;
+    min-width: 200px;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.post-content {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.post-title {
+    margin: 0 0 10px 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.post-meta {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.post-summary {
+    font-size: 1em;
+    color: #444;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    /* 限制摘要显示行数 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+
+.post-detail {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 80px;
+}
+
+.post-title {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.post-meta {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.post-meta span {
+    margin-right: 15px;
+}
+
+.post-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.post-content {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #444;
+}
+
+/* Markdown 样式 */
+.post-content :deep(h1, h2, h3, h4, h5, h6) {
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    color: #333;
+}
+
+.post-content :deep(p) {
+    margin-bottom: 1em;
+}
+
+.post-content :deep(a) {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.post-content :deep(a:hover) {
+    text-decoration: underline;
+}
+
+.post-content :deep(code) {
+    background-color: #f4f4f4;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+.post-content :deep(pre) {
+    background-color: #f4f4f4;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+.post-content :deep(blockquote) {
+    border-left: 4px solid #0066cc;
+    padding-left: 15px;
+    margin-left: 0;
+    font-style: italic;
+    color: #555;
+}
+
+.post-content :deep(ul, ol) {
+    margin-bottom: 1em;
+    padding-left: 30px;
+}
+
+.post-content :deep(img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
