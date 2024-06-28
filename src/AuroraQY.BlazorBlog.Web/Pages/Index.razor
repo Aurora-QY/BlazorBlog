@@ -1,6 +1,9 @@
 ﻿@page "/"
 @using AuroraQY.BlazorBlog.Application.Interfaces
 @using AuroraQY.BlazorBlog.Application.DTOs
+@using AuroraQY.BlazorBlog.Infrastructure.Data
+@using Microsoft.EntityFrameworkCore
+@inject IDbContextFactory<BlogDbContext> ContextFactory
 @inject IPostService PostService
 
 <header class="top-navbar">
@@ -73,6 +76,8 @@
                         <!-- 空状态显示 -->
                     </div>
                 </div>
+                <PostList Count="5" />
+                <a href="/posts">View all posts</a>
             </div>
         </div>
         <div class="joe_load" loading="true">加载中...</div>
@@ -96,6 +101,7 @@
 
     protected override async Task OnInitializedAsync()
     {
+        using var context = await ContextFactory.CreateDbContextAsync();
         posts = await PostService.GetLatestPostsAsync(5);
     }
 }

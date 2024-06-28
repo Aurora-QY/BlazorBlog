@@ -70,8 +70,13 @@ namespace AuroraQY.BlazorBlog.Application.Services
             );
             Console.WriteLine($"postDto: {postDtoJson}");
 
+            // 将 UTC 时间转换为北京时间
+            TimeZoneInfo beijingTimeZone = TimeZoneInfo.FindSystemTimeZoneById(
+                "China Standard Time"
+            );
+
             var post = _mapper.Map<Post>(postDto);
-            post.CreatedAt = DateTime.UtcNow;
+            post.CreatedAt = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, beijingTimeZone);
             await _postRepository.AddAsync(post);
             return post.Id;
         }

@@ -7,6 +7,10 @@
 {
     <p>Loading...</p>
 }
+else if (!posts.Any())
+{
+    <p>No posts available.</p>
+}
 else
 {
     <div class="post-list">
@@ -15,6 +19,10 @@ else
             <div class="post-item">
                 <h3><a href="/posts/@post.Id">@post.Title</a></h3>
                 <p>By @post.AuthorName on @post.CreatedAt.ToShortDateString()</p>
+                @if (!string.IsNullOrEmpty(post.Summary))
+                {
+                    <p>@post.Summary</p>
+                }
             </div>
         }
     </div>
@@ -23,8 +31,11 @@ else
 @code {
     private IEnumerable<PostDto> posts;
 
+    [Parameter]
+    public int Count { get; set; } = 10; // Default to 10 posts if not specified
+
     protected override async Task OnInitializedAsync()
     {
-        posts = await PostService.GetAllPostsAsync();
+        posts = await PostService.GetLatestPostsAsync(Count);
     }
 }

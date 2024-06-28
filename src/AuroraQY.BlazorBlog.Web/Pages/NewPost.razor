@@ -44,6 +44,7 @@
 
             <button type="submit" class="btn btn-primary mt-3">发布博客</button>
         </EditForm>
+        <Notification IsVisible="@showNotification" Message="@notificationMessage" />
     </div>
 
     <div class="preview-section">
@@ -56,6 +57,8 @@
 
 @code {
     private PostDto newPost = new PostDto();
+    private bool showNotification = false;
+    private string notificationMessage = "";
     private string renderedContent = "Markdown 渲染预览区域";
 
     protected override void OnInitialized()
@@ -73,13 +76,35 @@
 
     private async Task HandleValidSubmit()
     {
-        newPost.CreatedAt = DateTime.UtcNow;
-        // TODO:替换为实际的用户ID，或者从认证系统中获取
-        newPost.AuthorId = 1; // 这里因为目前还是个人博客，所以就写死了
-        Console.WriteLine(newPost.AuthorId.ToString(), newPost.AuthorName);
-        await PostService.CreatePostAsync(newPost);
-        NavigationManager.NavigateTo("/");
+
+        try
+        {
+            // 将 UTC 时间转换为北京时间
+            TimeZoneInfo beijingTimeZone = TimeZoneInfo.FindSystemTimeZoneById("China Standard Time");
+            newPost.CreatedAt = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, beijingTimeZone);
+
+            // TODO:替换为实际的用户ID，或者从认证系统中获取
+            newPost.AuthorId = 1; // 这里因为目前还是个人博客，所以就写死了
+            Console.WriteLine(newPost.AuthorId.ToString(), newPost.AuthorName);
+            await PostService.CreatePostAsync(newPost);
+
+            showNotification = true;
+            notificationMessage = "博文发表成功！";
+            StateHasChanged();
+
+            await Task.Delay(2000); // 延迟 2 秒
+
+            NavigationManager.NavigateTo("/");
+        }
+        catch (Exception ex)
+        {
+            // 处理错误
+            notificationMessage = "发表失败：" + ex.Message;
+            showNotification = true;
+            StateHasChanged();
+        }
     }
+
 
     private void OnContentChange(ChangeEventArgs e)
     {
