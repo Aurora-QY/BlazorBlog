@@ -11,5 +11,7 @@
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0-preview.1"/>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0-preview.1.24081.2"/>
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.0-preview.1.24081.5"/>
+    <!-- <PackageReference Include="Cnblogs.DashScope.Sdk" Version="0.2.2"/> -->
+    <PackageReference Include="Cnblogs.DashScope.AspNetCore" Version="0.2.2"/>
   </ItemGroup>
 </Project>

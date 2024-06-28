@@ -57,6 +57,23 @@ builder.Services.AddAutoMapper(typeof(Program).Assembly, typeof(PostService).Ass
 
 builder.Services.AddInfrastructure(builder.Configuration);
 
+// DashScope客户端，用于调用api
+
+// 添加从环境变量读取配置
+builder.Configuration.AddEnvironmentVariables(prefix: "DASHSCOPE_");
+
+// 手动映射环境变量到配置
+if (Environment.GetEnvironmentVariable("DASHSCOPE_APIKEY") is string apiKey)
+{
+    builder.Configuration["DashScope:ApiKey"] = apiKey;
+}
+
+// 添加 DashScope 客户端
+builder.Services.AddDashScopeClient(builder.Configuration);
+
+// 添加ChatBot服务
+builder.Services.AddScoped<ChatService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

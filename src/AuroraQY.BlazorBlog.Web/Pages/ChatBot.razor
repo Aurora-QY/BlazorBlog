@@ -1,0 +1,87 @@
+@page "/chatbot"
+@inject ChatService ChatService
+
+<h3>ChatBot</h3>
+
+<div class="chat-container">
+    @foreach (var message in messages)
+    {
+        <div class="message @(message.Sender == "User" ? "user-message" : "bot-message")">
+            <strong>@message.Sender:</strong> @message.Content
+        </div>
+    }
+</div>
+
+<div class="input-container">
+    <input @bind="userInput" @bind:event="oninput" @onkeyup="HandleKeyUp" placeholder="Type a message..." />
+    <button @onclick="SendMessage">Send</button>
+</div>
+
+<style>
+    .chat-container {
+        height: 400px;
+        overflow-y: auto;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .message {
+        margin-bottom: 10px;
+        padding: 5px;
+        border-radius: 5px;
+    }
+
+    .user-message {
+        background-color: #e6f3ff;
+        text-align: right;
+    }
+
+    .bot-message {
+        background-color: #f0f0f0;
+    }
+
+    .input-container {
+        display: flex;
+    }
+
+    input {
+        flex-grow: 1;
+        padding: 5px;
+    }
+
+    button {
+        padding: 5px 10px;
+    }
+</style>
+
+@code {
+    private List<ChatMessage> messages = new List<ChatMessage>();
+    private string userInput = string.Empty;
+
+    private async Task SendMessage()
+    {
+        if (!string.IsNullOrWhiteSpace(userInput))
+        {
+            messages.Add(new ChatMessage("User", userInput));
+            var userMessage = userInput;
+            userInput = string.Empty;
+
+            StateHasChanged();
+
+            @* var response = await ChatService.GetResponseAsync(userMessage); *@
+            var response = Environment.GetEnvironmentVariable("DASHSCOPE_APIKEY");
+            messages.Add(new ChatMessage("Bot", response));
+
+            StateHasChanged();
+        }
+    }
+
+    private async Task HandleKeyUp(KeyboardEventArgs e)
+    {
+        if (e.Key == "Enter")
+        {
+            await SendMessage();
+        }
+    }
+}
