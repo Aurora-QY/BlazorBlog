@@ -6,6 +6,7 @@ using AuroraQY.BlazorBlog.Infrastructure.ExternalServices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,9 +14,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 
-builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
+// builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
-// builder.Services.AddAutoMapper(typeof(Program).Assembly, typeof(PostService).Assembly);
+// var config = new MapperConfiguration(cfg =>
+// {
+//     cfg.AddProfile<MappingProfile>();
+// });
+// config.AssertConfigurationIsValid();
+
+builder.Services.AddAutoMapper(typeof(Program).Assembly, typeof(PostService).Assembly);
 builder.Services.AddScoped<IPostService, PostService>();
 builder.Services.AddSingleton<MarkdownRenderer>();
 

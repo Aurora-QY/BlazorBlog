@@ -39,6 +39,28 @@ namespace AuroraQY.BlazorBlog.Application.Services
             return _mapper.Map<IEnumerable<PostDto>>(posts);
         }
 
+        // public async Task<IEnumerable<PostDto>> GetLatestPostsAsync(int count)
+        // {
+        //     var posts = await _postRepository.GetLatestPostsAsync(count);
+        //     return posts
+        //         .Select(
+        //             p =>
+        //                 new PostDto
+        //                 {
+        //                     Id = p.Id,
+        //                     Title = p.Title,
+        //                     Content = p.Content,
+        //                     Summary = p.Summary,
+        //                     ImageUrl = p.ImageUrl,
+        //                     CreatedAt = p.CreatedAt,
+        //                     UpdatedAt = p.UpdatedAt,
+        //                     AuthorId = p.AuthorId,
+        //                     AuthorName = p.Author?.Username
+        //                 }
+        //         )
+        //         .ToList();
+        // }
+
         public async Task<int> CreatePostAsync(PostDto postDto)
         {
             // 打印 postDto 的内容
