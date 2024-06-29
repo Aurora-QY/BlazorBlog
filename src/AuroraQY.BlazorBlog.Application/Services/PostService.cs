@@ -39,6 +39,7 @@ namespace AuroraQY.BlazorBlog.Application.Services
             return _mapper.Map<IEnumerable<PostDto>>(posts);
         }
 
+        // 其实这段应该放在Repositories
         // public async Task<IEnumerable<PostDto>> GetLatestPostsAsync(int count)
         // {
         //     var posts = await _postRepository.GetLatestPostsAsync(count);
@@ -63,13 +64,6 @@ namespace AuroraQY.BlazorBlog.Application.Services
 
         public async Task<int> CreatePostAsync(PostDto postDto)
         {
-            // 打印 postDto 的内容
-            string postDtoJson = JsonSerializer.Serialize(
-                postDto,
-                new JsonSerializerOptions { WriteIndented = true }
-            );
-            Console.WriteLine($"postDto: {postDtoJson}");
-
             // 将 UTC 时间转换为北京时间
             TimeZoneInfo beijingTimeZone = TimeZoneInfo.FindSystemTimeZoneById(
                 "China Standard Time"

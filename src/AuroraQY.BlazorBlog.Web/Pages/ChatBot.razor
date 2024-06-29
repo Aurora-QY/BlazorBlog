@@ -15,8 +15,8 @@
         @foreach (var message in messages)
         {
             <div class="message @(message.Sender == "User" ? "user-message" : "bot-message")">
-                <img src="@(message.Sender == "User" ? "/avatar.png" : "/chatbot.png")" alt="@message.Sender avatar"
-                    class="avatar" />
+                <img src="@(message.Sender == "User" ? "/assets/avatar.png" : "/assets/chatbot.png")"
+                    alt="@message.Sender avatar" class="avatar" />
                 <div class="message-content">
                     @message.Content
                 </div>

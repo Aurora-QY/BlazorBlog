@@ -27,7 +27,7 @@ namespace AuroraQY.BlazorBlog.Infrastructure.Data.Repositories
         //         .FirstOrDefaultAsync(p => p.Id == id);
         // }
 
-        // 降序就是获取最新的
+        // 获取id对应推文
         public async Task<Post> GetByIdAsync(int id)
         {
             using var _context = await _contextFactory.CreateDbContextAsync();

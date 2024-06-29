@@ -25,6 +25,15 @@ namespace AuroraQY.BlazorBlog.Infrastructure
                     )
             );
 
+            // services.AddDbContext<BlogDbContext>(
+            //     options =>
+            //         options.UseMySql(
+            //             configuration.GetConnectionString("DefaultConnection"),
+            //             new MySqlServerVersion(new Version(8, 0, 21)),
+            //             mySqlOptions => mySqlOptions.EnableRetryOnFailure()
+            //         )
+            // );
+
             services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddSingleton<MarkdownRenderer>();
